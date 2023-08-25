@@ -70,3 +70,5 @@ for(let i = 1; i <= 100; i++) {
 
 // /************************************************* *****************/
 // Як відповідь на завдання прикріпити посилання на гіт-репозиторій.
+
+// GITHUB - https://github.com/TarasOstasha/FreshCode/blob/js-conditions-and-loops/js-conditions-and-loops.js
