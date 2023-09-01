@@ -69,7 +69,14 @@ for (let key in cat) {
 //    Передбачити методи:
 // для обчислення віку книги (у роках),
 // для зміни ціни книги.
-
+/**
+ * 
+ * @param {string} bookAuthor 
+ * @param {string} bookName 
+ * @param {string} bookAge 
+ * @param {string} bookPublishHouse 
+ * @param {number} bookPrice 
+ */
 function Book(bookAuthor, bookName, bookAge, bookPublishHouse, bookPrice) {
     this._bookAuthor = bookAuthor;
     this._bookName = bookName;
@@ -88,7 +95,7 @@ function Book(bookAuthor, bookName, bookAge, bookPublishHouse, bookPrice) {
     }
 }
 
-const myBook = new Book('J.K. Rowling', 'Harry Potter and Philosophers Stone', '11', 'Bloomsbury', '$30');
+const myBook = new Book('J.K. Rowling', 'Harry Potter and Philosophers Stone', '11', 'Bloomsbury', 30);
 myBook.changeBookName('Harry Potter and the Prisoner of Azkaban');
-myBook.changeBookPrice('$56');
+myBook.changeBookPrice(56);
 console.log(myBook);

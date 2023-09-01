@@ -36,17 +36,10 @@ if(orderAmount < 300) {
 // 1) Виведення чисел від 25 до 0 (порядок зменшення).
 let myNumber = 25;
 do {
-    myNumber--
     console.log(myNumber);
-} while (myNumber !== 0)
-// 2) Виведення чисел від 10 до 50, які кратні 5.
-let i = 0;
-while(i < 50) {
-    if(i%5 === 0 && i > 9) {
-        console.log(i);
-    }
-    i++;
-}
+    myNumber--
+    
+} while (myNumber >= 0)
 // 3) *Знайти суму чисел в межах від 1 до 100.
 // method DO WHILE
 let j = 1;

@@ -15,13 +15,16 @@ const copyOfRandomNumbers = [...randomNumberArray]; // i'm gonna use this array
 //console.log(copyOfRandomNumbers);
 // // Не використовувати методи перебору масивів (forEach, filter, map, findIndex), а використати цикли
 // 4 Вивести елементи з парними індексами.
-const isEvenIndexes = [];
+const evenIndex = [];
 for(let i = 0; i < copyOfRandomNumbers.length; i++) {
-    if(!(copyOfRandomNumbers[i]%2)) {
-        isEvenIndexes.push(copyOfRandomNumbers[i]); // even index
+    if(!(i%2)) {
+        evenIndex.push(copyOfRandomNumbers[i]); // even index
     }
+    // if(!(copyOfRandomNumbers[i]%2)) {
+    //     evenIndex.push(copyOfRandomNumbers[i]); // even index
+    // }
 }
-//console.log(isEvenIndexes);
+//console.log(evenIndex);
 // 5 Вивести лише парні елементи (парні числа діляться на 2 без залишку).
 const even = [];
 for (const num of copyOfRandomNumbers) {
@@ -35,7 +38,7 @@ copyOfRandomNumbers.push(0);
 copyOfRandomNumbers.unshift(0);
 const zeroIndexArray = [];
 for(let i = 0; i < copyOfRandomNumbers.length; i++) {
-    if(copyOfRandomNumbers[i] == 0) {
+    if(copyOfRandomNumbers[i] === 0) {
         zeroIndexArray.push(i)
     }
 }
@@ -43,7 +46,7 @@ for(let i = 0; i < copyOfRandomNumbers.length; i++) {
 // 7 Підрахувати кількість нульових елементів (елемент дорівнює нулю).
 const zeroIndexArray2 = [];
 for(let i = 0; i < copyOfRandomNumbers.length; i++) {
-    if(copyOfRandomNumbers[i] == 0) {
+    if(copyOfRandomNumbers[i] === 0) {
         zeroIndexArray2.push(i)
     }
 }
@@ -57,7 +60,7 @@ const myNewArr = [99, 5, 0, 9, 30].map(item => item/100);
 //console.log(myNewArr);
 // 10 Вивести елементи масиву, зведені у куб. // forEach
 const myItemArray = [99, 5, 0, 9, 30];
-let cubeArray = [];
+const cubeArray = [];
 myItemArray.forEach(item => {
     cubeArray.push(item*item*item);
 });
@@ -74,3 +77,7 @@ const isEven = [2,4,6,12,20].every(item => item%2 === 0);
 // 13 *Перевірити, чи є у масиві бодай один від'ємний елемент. // some
 const isNegative = [-1, 5, 0, 9, -10, 10].some(item => item < 0);
 //console.log(isNegative);
+
+
+
+

@@ -35,11 +35,14 @@ function User(name, surname, age, isMale, email, isSubscribed) {
   const notSubscribed = users.filter(item => !item.isSubscribed);
   
   // Отримати масив повних імен осіб жіночої статі шкільного віку (6 – 18 років).
-  const schoolAge = users.filter(item => !item.isMale && item.age >= 6 && item.age <= 18);
+  const schoolAge = users.filter(item => !item.isMale && item.age >= 6 && item.age <= 18).map(user => user.firstName + ' ' + user.lastName);
   
   // Видалити з масиву користувача з email useremail5@gmail.com
-  //users.splice(users.findIndex(item => item.email === 'useremail5@gmail.com'), 1)
-  
+  const userIndex = users.findIndex(item => item.email === 'useremail5@gmail.com');
+  if(userIndex) {
+    users.splice(userIndex, 1);
+  }
+ 
   // Перевірити, чи є серед користувачів користувач з email`ом useremail99@gmail.com
   const isEmailExist = users.some(item => item.email === 'useremail99@gmail.com');
   
