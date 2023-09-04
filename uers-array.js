@@ -39,7 +39,7 @@ function User(name, surname, age, isMale, email, isSubscribed) {
   
   // Видалити з масиву користувача з email useremail5@gmail.com
   const userIndex = users.findIndex(item => item.email === 'useremail5@gmail.com');
-  if(userIndex) {
+  if(userIndex !== -1) {
     users.splice(userIndex, 1);
   }
  
