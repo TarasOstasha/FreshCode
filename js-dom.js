@@ -30,12 +30,12 @@ img.addEventListener("mouseout", func1, false);
 
 function func() {  
    img.src = 'https://www.jquery-az.com/html/images/banana.jpg';
-   img.title = 'image 1';
+   img.alt = 'image 1';
 }
 
 function func1() {  
     img.src = 'https://www.w3schools.com/images/picture.jpg';
-    img.title = 'image 2';
+    img.alt = 'image 2';
 }
 
 
