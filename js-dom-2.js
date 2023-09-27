@@ -59,10 +59,6 @@ function createNewsCard(item) {
     const newsDate = createNewsDate(item);
     newsCardEl.append(newsInfo, newsParagraph, trashIcon, likeIcon, newsDate);
     //newsCardEl.append(createNewsInfo(item), createNewsParagraph(item), createTrashIcon(), createLikeIcon(), createNewsDate(item));
-    function highlight(e) {
-    //    e.target.style.background = 'yellow'; 
-        //e.target.closest('.newsCard').style.background = '#d9d921';
-    }
     newsCardEl.onclick = highlight;
     return newsCardEl;
 }
@@ -114,7 +110,6 @@ function createLikeIcon() {
         toggleBoolean();
         e.target.style.color = flag ? "red" : "black";
         e.target.closest('.newsCard').style.background = flag ? '#d9d921' : '';
-        //console.log(e.target)  
     }
     //likeIcon.onclick = like;
     likeIcon.addEventListener('click', like);
