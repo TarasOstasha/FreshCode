@@ -47,3 +47,41 @@ HTML CSS JSResult Skip Results Iframe
 .controls__btn--next{
   right: 0;
 }
+
+
+
+/* DOM 2 */
+:root {
+  --main-title-color: #fff;
+}
+
+.newsInfoEl {
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* filter: opacity(0.5); */
+  /* filter: drop-shadow(2px 4px 6px black); */
+}
+.newsInfoEl h2 {
+  padding: 100px;
+  text-align: center;
+  color: var(--main-title-color);
+}
+
+i {
+  cursor: pointer;
+  font-size: 20px;
+  padding: 5px;
+  z-index: 999;
+}
+article {
+  padding: 10px;
+  margin: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  z-index: 1;
+}
+.date {
+  text-align: right;
+}
+.fa-heart:hover {
+  color: red;
+}
