@@ -44,9 +44,13 @@ let myMap = new Map([[1,"first"], [3,"third"]])
 // тобто в мапі імені користувача має співставлятися масив його повідомлень, 
 // де кожне повідомлення представлене об'єктом з текстом повідомлення і його датою.
 let userMsgs = new Map();
-for(let val of messages) {
-    userMsgs.set(val.name, {message: val.message})
-}
+messages.forEach(item => {
+    if(userMsgs.has(item.name)) {
+        userMsgs.get(item.name).push(item);
+    } else {
+        userMsgs.set(item.name, [item]);
+    }
+});
 console.log(userMsgs);
 
 //console.log(Array.from(Array.from(new Set([...array1,...array2]))));
