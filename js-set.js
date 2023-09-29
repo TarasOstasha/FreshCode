@@ -46,9 +46,9 @@ let myMap = new Map([[1,"first"], [3,"third"]])
 let userMsgs = new Map();
 messages.forEach(item => {
     if(userMsgs.has(item.name)) {
-        userMsgs.get(item.name).push(item);
+        userMsgs.get(item.name).push(item.message);
     } else {
-        userMsgs.set(item.name, [item]);
+        userMsgs.set(item.name, [item.message]);
     }
 });
 console.log(userMsgs);
