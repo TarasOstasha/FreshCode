@@ -16,6 +16,7 @@ class Vehicle {
         this._brand = brand;
         this._model = model;
         this._manufactureDate = manufactureDate;
+        this.dimensions = dimensions; 
     }
 
     getFullInfo() {
@@ -37,13 +38,12 @@ class PassengerTransport extends Vehicle {
         this._passengerCount = passengerCount;
     }
     addPassenger() {
-        if(this._passengerCount < this._passengerLimit) {
-            this._passengerCount += 1;
-            return true;
-        } else {
-            throw new Error('You are out of the maximum passenger limit');
-        }
-    }
+        if (this._passengerCount >= this._passengerLimit) {
+          throw new Error('You are out of the maximum passenger limit'); 
+        } 
+        this._passengerCount += 1;
+        return true;
+      }
 
     getFullInfo() {
         return `Your car is ${this._brand}, model - ${this._model}, ${this.getAge()} years old with ${this._passengerLimit} maximum passangers` 
