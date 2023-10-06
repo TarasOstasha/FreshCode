@@ -15,7 +15,6 @@ function loadUsers(options) {
   )
     .then(response => response.json())
     .then(({ results }) => {
-      console.log('data :>> ', results);
       renderUsers(results);
     })
     .catch(e => {
@@ -34,7 +33,6 @@ document.getElementById('first').addEventListener('click', firstBtnHandler);
 document.getElementById('last').addEventListener('click', lastBtnHandler);
 
 function prevBtnHandler() {
-    console.log(options.page);
   if (options.page > 1) {
     options.page -= 1;
     createPageCount(options.page)
@@ -42,7 +40,6 @@ function prevBtnHandler() {
   }
 }
 function nextBtnHandler() {
-    console.log(options.page);
   options.page += 1;
   createPageCount(options.page)
   loadUsers(options);
