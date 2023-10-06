@@ -22,10 +22,7 @@ function loadUsers(options) {
     });
 }
 
-// const [prevBtn, nextBtn] = document.querySelectorAll('button');
 
-// prevBtn.addEventListener('click', prevBtnHandler);
-// nextBtn.addEventListener('click', nextBtnHandler);
 
 document.getElementById('prev').addEventListener('click', prevBtnHandler);
 document.getElementById('next').addEventListener('click', nextBtnHandler);
