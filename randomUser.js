@@ -34,12 +34,14 @@ function prevBtnHandler() {
     options.page -= 1;
     createPageCount(options.page)
     loadUsers(options);
+    resetUserOutput();
   }
 }
 function nextBtnHandler() {
   options.page += 1;
   createPageCount(options.page)
   loadUsers(options);
+  resetUserOutput();
 }
 
 // -- додати кнопку <<, тобто перехід першу сторінку;
@@ -47,12 +49,19 @@ function firstBtnHandler() {
     options.page = 1;
     createPageCount(options.page)
     loadUsers(options);
+    resetUserOutput();
 }
 // -- додати кнопку <<, тобто перехід останню сторінку;
 function lastBtnHandler() {
     options.page = options.results;
     createPageCount(options.page)
     loadUsers(options);
+    resetUserOutput();
+}
+function resetUserOutput() {
+    const display = document.getElementById('choosenName');
+    display.style.display = 'none';
+    highlightedUsers = [];
 }
 
 function renderUsers(users) {
@@ -82,7 +91,7 @@ function createUserItem({
     let clickedFlag = false;
     function userCardHandler(e) {
         clickedFlag = !clickedFlag;
-        clickedFlag ?  e.target.style.background = 'aqua' : e.target.style.background = '';
+        clickedFlag ?  e.currentTarget.style.background = 'aqua' : e.currentTarget.style.background = '';
         // console.log(e.target);
         const name = `${firstName} ${lastName}`;
         const indexUser = highlightedUsers.indexOf(name)
