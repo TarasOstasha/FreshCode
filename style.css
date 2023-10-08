@@ -1,0 +1,41 @@
+:root {
+  font-family: sans-serif;
+}
+
+.header {
+  background-color: bisque;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.userCard {
+  margin: 0 auto;
+  max-width: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 0 5px grey;
+}
+
+.userCard > img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+
+}
+
+.newsInfo {
+  margin: 0 auto;
+  max-width: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 0 5px grey;
+}
