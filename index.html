@@ -41,9 +41,9 @@
                 <div class="input-group">
                     <input type="text" class="form-input tel" type="tel" name="user-tel" pattern="\d{3}" required
                         placeholder="000">
-                    <input type="text" class="form-input tel" type="tel" name="user-tel" pattern="\d{3}" required
+                    <input type="text" class="form-input tel" type="tel" name="user-tel1" pattern="\d{3}" required
                         placeholder="000">
-                    <input type="text" class="form-input tel" type="tel" name="user-tel" pattern="\d{4}" required
+                    <input type="text" class="form-input tel" type="tel" name="user-tel2" pattern="\d{4}" required
                         placeholder="0000">
                 </div>
             </label>
@@ -59,7 +59,7 @@
             <!--  -->
             <label class="form-label">
                 <span class="label-caption">Message *</span>
-                <textarea class="form-input-textarea" name="user-message" id="" cols="30" rows="10"></textarea>
+                <textarea class="form-input form-input-textarea" name="user-message" id="" cols="30" rows="10" required pattern="/[a-z]{1,100}"></textarea>
             </label>
             <!--  -->
             <hr>
