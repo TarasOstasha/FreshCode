@@ -21,7 +21,7 @@ const INPUTS_REG_EXP = {
     'user-tel': /\d{3}/,
     'user-tel1': /\d{3}/,
     'user-tel2': /\d{4}/,
-    'user-message': /^[A-Z][a-z]{2,100}$/
+    'user-message': /^[a-zA-Z\s]{5,100}/
   };
 
   const inputs = document.querySelectorAll('.form-input');
