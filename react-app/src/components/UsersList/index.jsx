@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaRegTrashCan } from "react-icons/fa6";
+import UserListItem from "./UsersListItem";
 
 const usersDb = [
   {
@@ -51,21 +51,13 @@ function UsersList() {
     usersCopy.splice(i, 1);
     setUsers(usersCopy);
   }
+
   function mapUsers(u, index) {
-    return (
-      <li key={u.id}>
-        <img width="50px" height="50px" src={u.photoSrc} alt={u.lastName} />
-        <p>
-          {u.firstName} {u.lastName}
-        </p>
-        <p>{u.age}</p>
-        <button onClick={() => removeUser(index)}>
-          <FaRegTrashCan />
-        </button>
-      </li>
-    );
+    return <UserListItem key={u.id} user={u} index={index} removeUser={removeUser} />;
   }
   return <ul>{users.map(mapUsers)}</ul>;
 }
 
 export default UsersList;
+
+
