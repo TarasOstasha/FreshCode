@@ -1,0 +1,9 @@
+.userList {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+}
+.list {
+    list-style: none;
+}

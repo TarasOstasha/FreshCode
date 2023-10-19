@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { FaRegTrashCan } from "react-icons/fa6";
-
-//let userBgColorFlag = true;
-//let toggleEvent = () => userBgColorFlag = !userBgColorFlag;
+import styles from './Style.module.css';
 
 function UserListItem(props) {
   const { user: u, index, removeUser, selectUser } = props;
@@ -12,7 +10,7 @@ function UserListItem(props) {
   }
 
   return (
-    <li style={ userStyles } className="list" onClickCapture={ () => selectUser(index) }>
+    <li style={ userStyles } className={styles.list} onClickCapture={ () => selectUser(index) }>
       <img width="50px" height="50px" src={u.photoSrc} alt={u.lastName} />
       <p>
         {u.firstName} {u.lastName}

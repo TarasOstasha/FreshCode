@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import UserListItem from "./UsersListItem";
+import styles from './Style.module.css';
 
 const usersDb = [
   {
@@ -55,7 +56,7 @@ function UserList() {
   }
 
   function selectUser(index) {
-    const usersCopy = [...users];
+    const usersCopy = [...users]; // you must alway do copy of the original array
     usersCopy[index] = {...users[index], isSelected: !users[index].isSelected };
     setUsers(usersCopy);
   }
@@ -72,7 +73,7 @@ function UserList() {
     );
   }
 
-  return <ul>{users.map(mapUser)}</ul>
+  return <ul className={styles.userList}>{users.map(mapUser)}</ul>
 }
 
 export default UserList;
