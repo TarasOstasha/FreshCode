@@ -47,7 +47,7 @@ const usersDb = [
 
 
 function UserList() {
-  const [users, setUsers] = useState(usersDb.map(u => ({ ...u, isSelected: true })));
+  const [users, setUsers] = useState(usersDb.map(u => ({ ...u, isSelected: false })));
 
   function removeUser(i) {
     const usersCopy = [...users];
