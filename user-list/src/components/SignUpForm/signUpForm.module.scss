@@ -1,0 +1,57 @@
+.signUpFormWrapper {
+  margin: 20px auto;
+  width: 100%;
+  max-width: 800px;
+  min-width: 200px;
+  padding: 10px;
+  background-color: #87b2e4;
+  .formTitle {
+    text-align: center;
+  }
+  .signUpForm {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: antiquewhite;
+    .formLabel {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 10px;
+      gap: 10px;
+      .labelCaption {
+        flex: 1 1 150px;
+      }
+      .formInput {
+        padding: 5px;
+        flex: 5 1 150px;
+        outline: none;
+      }
+    }
+    .signUpBtn {
+        padding: 5px;
+        margin: 10px;
+    }
+    .valid {
+        background-color: aquamarine;
+        border:  1 px solid green;
+    }
+    
+    .invalid {
+        background-color: coral;
+        border: 1px solid red;
+    }
+  }
+}
+
+
+.test {
+    padding: 5px;
+    flex: 5 1 150px;
+    outline: none;
+  }
+
+  .test2 {
+    padding: 5px;
+    flex: 5 1 250px;
+    outline: none;
+  }
