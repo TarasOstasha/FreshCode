@@ -26,6 +26,15 @@
         flex: 5 1 150px;
         outline: none;
       }
+      .comparedPasswords {
+        display: block;
+        color: red;
+        width: 100%;
+        text-align: right;
+        font-weight: bold;
+        // display: none;
+      }
+
     }
     .signUpBtn {
         padding: 5px;

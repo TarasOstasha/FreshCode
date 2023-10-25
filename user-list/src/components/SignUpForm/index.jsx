@@ -13,19 +13,20 @@ function SignUp() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [agreement, setAgreement] = useState(false);
+  let passwordIdentityFlag = false;
+  const [passwordIdentity, setPasswordIdentity] = useState(null);
 
-  
-    let test = ''
-
+  const defaultInputStyles = classNames(styles.formInput, styles.formInput); // set empty white bg on inputs
   useEffect(() => {
     if(password === confirmPassword) {
-        const add = classNames(styles.formInput, styles.test2)
-        
+        console.log(password === confirmPassword)
+        // classNames(styles.comparedPasswords, styles.setComparedPassword)
+        setPasswordIdentity(false);
     } else {
-   
+        setPasswordIdentity(true);
     }
     
-  },[password,confirmPassword])
+  },[password,confirmPassword, passwordIdentity])
 
   function handlesignUpChange({ target: { value } }) {
     setSignUp(value);
@@ -35,6 +36,8 @@ function SignUp() {
   }
   function handleConfirmPasswordChange({ target: { value } }) {
     setConfirmPassword(value);
+    //console.log(confirmPassword.length)
+    console.log(passwordIdentityFlag)
   }
   function handleAgreement({ target: { checked } }) {
     setAgreement(checked);
@@ -56,10 +59,10 @@ function SignUp() {
     [styles.valid]: SIGNUP_FORM_REG_EXP.signUp.test(password),
     [styles.invalid]: !SIGNUP_FORM_REG_EXP.signUp.test(password),
   });
-  //const test = classNames(styles.formInput, styles.test);
+  
   const passwordConfirmClassName = classNames(styles.formInput, {
-    [styles.valid]: SIGNUP_FORM_REG_EXP.signUp.test(confirmPassword),
-    [styles.invalid]: !SIGNUP_FORM_REG_EXP.signUp.test(confirmPassword),
+    [styles.valid]: SIGNUP_FORM_REG_EXP.signUp.test(confirmPassword) && confirmPassword === password,
+    [styles.invalid]: !SIGNUP_FORM_REG_EXP.signUp.test(confirmPassword) || confirmPassword !== password,
   });
 
   return (
@@ -69,7 +72,7 @@ function SignUp() {
         <label className={styles.formLabel}>
           <span className={styles.labelCaption}>Sign Up:</span>
           <input
-            className={signUpClassName}
+            className={signUp.length === 0 ? defaultInputStyles : signUpClassName}
             type="email"
             value={signUp}
             onChange={handlesignUpChange}
@@ -81,7 +84,7 @@ function SignUp() {
         <label className={styles.formLabel}>
           <span className={styles.labelCaption}>Password:</span>
           <input
-            className={passwordClassName}
+            className={password.length === 0 ? defaultInputStyles : passwordClassName}
             type="password"
             placeholder="Your Password"
             name="password"
@@ -92,13 +95,14 @@ function SignUp() {
         <label className={styles.formLabel}>
           <span className={styles.labelCaption}>Confirm Password:</span>
           <input
-            className={test}
+            className={confirmPassword.length === 0 ? defaultInputStyles : passwordConfirmClassName}
             type="password"
             placeholder="Your Password"
             name="confirmPassword"
             value={confirmPassword}
             onChange={handleConfirmPasswordChange}
           />
+          <span style={{display: passwordIdentity===false ? 'none' : 'block' }} className={styles.comparedPasswords}>*Password Confirmation Is Not Equal Or Empty</span>
         </label>
         <label className={styles.formLabel}>
             <span className={styles.labelCaption}>*Agree to Terms and Conditions:</span>
