@@ -26,6 +26,11 @@
         flex: 5 1 150px;
         outline: none;
       }
+      .passwordView {
+        display: block;
+        width: 100%;
+        text-align: right;
+      }
       .comparedPasswords {
         display: block;
         color: red;
@@ -35,6 +40,10 @@
         // display: none;
       }
 
+    }
+    .formLabelAgreement {
+        text-align: right;
+        padding: 10px;
     }
     .signUpBtn {
         padding: 5px;

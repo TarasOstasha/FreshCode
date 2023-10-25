@@ -5,7 +5,8 @@ import styles from "./signUpForm.module.scss";
 const SIGNUP_FORM_REG_EXP = {
   signUp: /^.+@.+$/,
   password: /^(?=.*[A-Z].*)(?=.*[a-z].*)(?=.*\d.*)(?=.*[!#%._].*).{8,16}$/,
-  passwordConfirm : /^(?=.*[A-Z].*)(?=.*[a-z].*)(?=.*\d.*)(?=.*[!#%._].*).{8,16}$/
+  passwordConfirm:
+    /^(?=.*[A-Z].*)(?=.*[a-z].*)(?=.*\d.*)(?=.*[!#%._].*).{8,16}$/,
 };
 
 function SignUp() {
@@ -13,20 +14,18 @@ function SignUp() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [agreement, setAgreement] = useState(false);
-  let passwordIdentityFlag = false;
   const [passwordIdentity, setPasswordIdentity] = useState(null);
+  const [viewPasswordStatus, setViewPasswordStatus] = useState(false);
 
   const defaultInputStyles = classNames(styles.formInput, styles.formInput); // set empty white bg on inputs
   useEffect(() => {
-    if(password === confirmPassword) {
-        console.log(password === confirmPassword)
-        // classNames(styles.comparedPasswords, styles.setComparedPassword)
-        setPasswordIdentity(false);
+    if (password === confirmPassword) {
+      console.log(password === confirmPassword);
+      setPasswordIdentity(false);
     } else {
-        setPasswordIdentity(true);
+      setPasswordIdentity(true);
     }
-    
-  },[password,confirmPassword, passwordIdentity])
+  }, [password, confirmPassword, passwordIdentity]);
 
   function handlesignUpChange({ target: { value } }) {
     setSignUp(value);
@@ -34,10 +33,11 @@ function SignUp() {
   function handlePasswordChange({ target: { value } }) {
     setPassword(value);
   }
+  function handlePassword({ target: { checked } }) {
+    setViewPasswordStatus(checked);
+  }
   function handleConfirmPasswordChange({ target: { value } }) {
     setConfirmPassword(value);
-    //console.log(confirmPassword.length)
-    console.log(passwordIdentityFlag)
   }
   function handleAgreement({ target: { checked } }) {
     setAgreement(checked);
@@ -49,7 +49,6 @@ function SignUp() {
     setPassword("");
     setAgreement(false);
   }
-  
 
   const signUpClassName = classNames(styles.formInput, {
     [styles.valid]: SIGNUP_FORM_REG_EXP.signUp.test(signUp),
@@ -59,10 +58,14 @@ function SignUp() {
     [styles.valid]: SIGNUP_FORM_REG_EXP.signUp.test(password),
     [styles.invalid]: !SIGNUP_FORM_REG_EXP.signUp.test(password),
   });
-  
+
   const passwordConfirmClassName = classNames(styles.formInput, {
-    [styles.valid]: SIGNUP_FORM_REG_EXP.signUp.test(confirmPassword) && confirmPassword === password,
-    [styles.invalid]: !SIGNUP_FORM_REG_EXP.signUp.test(confirmPassword) || confirmPassword !== password,
+    [styles.valid]:
+      SIGNUP_FORM_REG_EXP.signUp.test(confirmPassword) &&
+      confirmPassword === password,
+    [styles.invalid]:
+      !SIGNUP_FORM_REG_EXP.signUp.test(confirmPassword) ||
+      confirmPassword !== password,
   });
 
   return (
@@ -72,7 +75,9 @@ function SignUp() {
         <label className={styles.formLabel}>
           <span className={styles.labelCaption}>Sign Up:</span>
           <input
-            className={signUp.length === 0 ? defaultInputStyles : signUpClassName}
+            className={
+              signUp.length === 0 ? defaultInputStyles : signUpClassName
+            }
             type="email"
             value={signUp}
             onChange={handlesignUpChange}
@@ -84,8 +89,10 @@ function SignUp() {
         <label className={styles.formLabel}>
           <span className={styles.labelCaption}>Password:</span>
           <input
-            className={password.length === 0 ? defaultInputStyles : passwordClassName}
-            type="password"
+            className={
+              password.length === 0 ? defaultInputStyles : passwordClassName
+            }
+            type={viewPasswordStatus ? "text" : "password"}
             placeholder="Your Password"
             name="password"
             value={password}
@@ -95,18 +102,43 @@ function SignUp() {
         <label className={styles.formLabel}>
           <span className={styles.labelCaption}>Confirm Password:</span>
           <input
-            className={confirmPassword.length === 0 ? defaultInputStyles : passwordConfirmClassName}
-            type="password"
+            className={
+              confirmPassword.length === 0
+                ? defaultInputStyles
+                : passwordConfirmClassName
+            }
+            type={viewPasswordStatus ? "text" : "password"}
             placeholder="Your Password"
             name="confirmPassword"
             value={confirmPassword}
             onChange={handleConfirmPasswordChange}
           />
-          <span style={{display: passwordIdentity===false ? 'none' : 'block' }} className={styles.comparedPasswords}>*Password Confirmation Is Not Equal Or Empty</span>
+          <div className={styles.passwordView}>
+            <span>Show Password</span>
+            <input
+              onChange={handlePassword}
+              name="showPassword"
+              type="checkbox"
+            />
+          </div>
+          <span
+            style={{ display: passwordIdentity === false ? "none" : "block" }}
+            className={styles.comparedPasswords}
+          >
+            *Password Confirmation Is Not Equal Or Empty
+          </span>
         </label>
-        <label className={styles.formLabel}>
-            <span className={styles.labelCaption}>*Agree to Terms and Conditions:</span>
-            <input onChange={handleAgreement} value={false} name="agreement" type="checkbox" required />
+        <label className={styles.formLabelAgreement}>
+          <span className={styles.labelCaption}>
+            *Agree to Terms and Conditions:
+          </span>
+          <input
+            onChange={handleAgreement}
+            value={false}
+            name="agreement"
+            type="checkbox"
+            required
+          />
         </label>
         <button className={styles.signUpBtn} type="submit">
           Sign Up
