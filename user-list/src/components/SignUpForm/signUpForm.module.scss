@@ -1,10 +1,16 @@
+$mainBgColor: #fff;
+$validBG: aquamarine;
+$invalidBG: coral;
+$error: red;
+
 .signUpFormWrapper {
   margin: 20px auto;
   width: 100%;
   max-width: 800px;
   min-width: 200px;
   padding: 10px;
-  background-color: #87b2e4;
+  background-color: $mainBgColor;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   .formTitle {
     text-align: center;
   }
@@ -12,7 +18,7 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
-    background-color: antiquewhite;
+    background-color: rgba(0, 0, 0, 0.11);
     .formLabel {
       display: flex;
       flex-wrap: wrap;
@@ -33,11 +39,10 @@
       }
       .comparedPasswords {
         display: block;
-        color: red;
+        color: $error;
         width: 100%;
         text-align: right;
         font-weight: bold;
-        // display: none;
       }
 
     }
@@ -46,17 +51,19 @@
         padding: 10px;
     }
     .signUpBtn {
-        padding: 5px;
+        padding: 10px;
         margin: 10px;
+        background-color: $mainBgColor;
+        border:transparent;
     }
     .valid {
-        background-color: aquamarine;
+        background-color: $validBG;
         border:  1 px solid green;
     }
     
     .invalid {
-        background-color: coral;
-        border: 1px solid red;
+        background-color: $invalidBG;
+        border: 1px solid $error;
     }
   }
 }

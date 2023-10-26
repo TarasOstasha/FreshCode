@@ -48,6 +48,7 @@ function SignUp() {
     setSignUp("");
     setPassword("");
     setAgreement(false);
+    setViewPasswordStatus(false);
   }
 
   const signUpClassName = classNames(styles.formInput, {
