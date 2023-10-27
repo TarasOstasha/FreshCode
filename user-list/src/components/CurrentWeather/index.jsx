@@ -9,7 +9,7 @@ function CurrentWeather() {
   const [selectedWindSpeedUnit, setWindSpeedUnit] = useState("kmh");
 
   useEffect(() => {
-    console.log("fetch");
+    const controller = new AbortController();
     fetch(
       //"https://api.open-meteo.com/v1/forecast?latitude=40.7143&longitude=-74.006&current=temperature_2m,relativehumidity_2m,apparent_temperature,is_day,precipitation,rain,showers,snowfall,weathercode,cloudcover,pressure_msl,surface_pressure,windspeed_10m,winddirection_10m,windgusts_10m&hourly=temperature_2m"
       //'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m&hourly=temperature_2m&temperature_unit=fahrenheit'
@@ -22,6 +22,9 @@ function CurrentWeather() {
         setWeather(data);
       })
       .catch((err) => console.log(err));
+      return () => {
+        controller.abort();
+      }
   }, [selectedTempTunit, selectedWindSpeedUnit]);
   return (
     <div className={styles.weatherWrapper}>
