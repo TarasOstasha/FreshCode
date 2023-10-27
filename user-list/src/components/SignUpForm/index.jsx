@@ -135,7 +135,7 @@ function SignUp() {
           </span>
           <input
             onChange={handleAgreement}
-            value={false}
+            checked={false}
             name="agreement"
             type="checkbox"
             required
