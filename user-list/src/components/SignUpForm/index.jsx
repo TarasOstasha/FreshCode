@@ -14,7 +14,7 @@ function SignUp() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [agreement, setAgreement] = useState(false);
-  const [passwordIdentity, setPasswordIdentity] = useState(null);
+  const [passwordIdentity, setPasswordIdentity] = useState(false);
   const [viewPasswordStatus, setViewPasswordStatus] = useState(false);
 
   const defaultInputStyles = classNames(styles.formInput, styles.formInput); // set empty white bg on inputs
@@ -25,7 +25,7 @@ function SignUp() {
     } else {
       setPasswordIdentity(true);
     }
-  }, [password, confirmPassword, passwordIdentity]);
+  }, [password, confirmPassword]);
 
   function handlesignUpChange({ target: { value } }) {
     setSignUp(value);
@@ -34,19 +34,23 @@ function SignUp() {
     setPassword(value);
   }
   function handlePassword({ target: { checked } }) {
+    // ask
     setViewPasswordStatus(checked);
+    console.log(passwordIdentity, 'passwordIdentity')
   }
   function handleConfirmPasswordChange({ target: { value } }) {
     setConfirmPassword(value);
   }
   function handleAgreement({ target: { checked } }) {
+    console.log(checked, 'handleAgreement')
     setAgreement(checked);
-    console.log(agreement);
+    console.log(agreement, 'agreement');
   }
   function handleSubmit(e) {
     e.preventDefault();
     setSignUp("");
     setPassword("");
+    setConfirmPassword("");
     setAgreement(false);
     setViewPasswordStatus(false);
   }
@@ -120,6 +124,7 @@ function SignUp() {
               onChange={handlePassword}
               name="showPassword"
               type="checkbox"
+              checked={viewPasswordStatus}
             />
           </div>
           <span
@@ -135,7 +140,7 @@ function SignUp() {
           </span>
           <input
             onChange={handleAgreement}
-            checked={false}
+            checked={agreement}
             name="agreement"
             type="checkbox"
             required
