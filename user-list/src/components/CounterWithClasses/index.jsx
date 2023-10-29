@@ -1,37 +1,60 @@
 import { Component } from "react";
 
 class CounterWithClasses extends Component {
-    constructor(props) {
-        super(props)
+  constructor(props) {
+    super(props);
+    console.log("constructor");
+    this.state = {
+      count: 0,
+    };
+  }
 
-        this.state = {
-            count: 0
-        }
-        
-    }
-    dec = () => {
-        this.setState({
-            count: this.state.count - this.props.step
-        })
-    }
+  // life cicle, works after firs loading app
+  componentDidMount() {
+    console.log("componentDidMount");
+  }
 
-    inc = () => {
-        this.setState({
-            count: this.state.count + this.props.step
-        })
-    }
+  componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate');
+  }
 
-    render() {
-        return (
-        <div> 
-            Count: {this.state.count}
-            <button onClick={this.dec}>-</button>
-            <button onClick={this.inc}>+</button>
-            </div>
-        )
-    }
+  componentWillUnmount() {
+    console.log('componentWillUnmount');
+   }
+
+  dec = () => {
+    const {
+      state: { count },
+      props: { step },
+    } = this;
+
+    this.setState({
+      count: count - step,
+    });
+  };
+
+  inc = () => {
+    const {
+      state: { count },
+      props: { step },
+    } = this;
+
+    this.setState({
+      count: count + step,
+    });
+  };
+
+  render() {
+    console.log("render");
+    const { count } = this.state;
+    return (
+      <div>
+        Count: {count}
+        <button onClick={this.dec}>-</button>
+        <button onClick={this.inc}>+</button>
+      </div>
+    );
+  }
 }
 
-
-
-export default CounterWithClasses
+export default CounterWithClasses;

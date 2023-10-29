@@ -75,93 +75,108 @@ import CurrentWeather from './components/CurrentWeather';
 
 // classes
 import CounterWithClasses from './components/CounterWithClasses';
-// class App extends Component {
-//   constructor(props) {
-//     super(props)
+class App extends Component {
+  constructor(props) {
+    super(props)
 
-//     this.state = {
-//        step: 1
-//     }
-//   }
-//   handleStepChange=({target : { value } })=> {
-//     this.setState({ step: +value })
-//   }
-//   render() {
-//     return (
-//       <>
-//       <input type='number' value={this.state.step} onChange={this.handleStepChange} />
-//       <CounterWithClasses step={this.state.step} />
-//       </>
+    this.state = {
+       step: 1
+    }
+  }
+  handleStepChange=({target : { value } })=> {
+    this.setState({ step: +value })
+  }
+  render() {
+    return (
+      <>
+      <input type='number' value={this.state.step} onChange={this.handleStepChange} />
+      {/* <CounterWithClasses step={this.state.step} /> */}
+      <CounterWithClasses step={1} />
+      </>
 
-//     )
-//   }
+    )
+  }
 
-// }
+}
 
 // Routing
-import { BrowserRouter as Router, Route, Switch, Link, useHistory } from 'react-router-dom';
+// import { BrowserRouter as Router, Route, Switch, Link, useHistory, useRouteMatch, NavLink } from 'react-router-dom';
 
-function App() {
-  return (
-    <Router>
-      <nav>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/about'>About</Link></li>
-        <li><Link to='/components'>Components</Link></li>
-        <li><Link to='/contacts'>Contacts</Link></li>
-      </nav>
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/about">
-          <About />
-        </Route>
-        <Route path="/components">
-          <Components />
-        </Route>
-        <Route path="/contacts">
-          <Contacts />
-        </Route>
-        <Route path="/*">
-          <NotFound />
-        </Route>
-      </Switch>
-    </Router>
-  )
-}
+// const navLinkStyles = isActive => ( { color: isActive ? 'green' : 'blue' } );
+// function App() {
+//   return (
+//     <Router>
+//       <nav>
+//         <li><NavLink style={navLinkStyles} to='/'>Home</NavLink></li>
+//         <li><NavLink style={navLinkStyles} to='/about'>About</NavLink></li>
+//         <li><NavLink style={navLinkStyles} to='/components'>Components</NavLink></li>
+//         <li><NavLink style={navLinkStyles} to='/contacts'>Contacts</NavLink></li>
+//       </nav>
+//       <Switch>
+//         <Route exact path="/">
+//           <Home />
+//         </Route>
+//         <Route path="/about">
+//           <About />
+//         </Route>
+//         <Route path="/components">
+//           <Components />
+//         </Route>
+//         <Route path="/contacts">
+//           <Contacts />
+//         </Route>
+//         <Route path="/*">
+//           <NotFound />
+//         </Route>
+//       </Switch>
+//     </Router>
+//   )
+// }
 
 export default App;
 
 
 // test router pages
-function Home() {
-  return <div>Home</div>
-}
+// function Home() {
+//   return <div>Home</div>
+// }
 
-function Components() {
-  return <div>Components</div>
-}
+// function Components() {
+//   const { url, path } = useRouteMatch();
 
-function About() {
-  return <div>About</div>
-}
+//   return <div>
+//     <Link to={`${url}/login`}>Login</Link>{" "}
+//     <Link to={`${url}/register`}>Register</Link>
+//     <Switch>
+//       <Route path={`${path}/login`}>
+//         <LoginForm />
+//       </Route>
+//       <Route path={`${path}/register`}>
+//         <SignUp />
+//       </Route>
+//     </Switch>
+//   </div>
+// }
 
-function Contacts() {
-  return <div>Contacts</div>
-}
+// function About() {
+//   return <div>About</div>
+// }
 
-function NotFound() {
-  const history = useHistory();
-  useEffect(()=> {
-    const id = setTimeout(() => {
+// function Contacts() {
+//   return <div>Contacts</div>
+// }
 
-      history.push('/');
-    },5000)
+// function NotFound() {
+//   const history = useHistory();
+//   useEffect(() => {
+//     const id = setTimeout(() => {
 
-    return () => {
-      clearTimeout(id) // remove settimeiout
-    }
-  })
-  return <h1>404 Not Found</h1>
-}
+//       history.push('/');
+//     }, 5000)
+
+//     return () => {
+//       clearTimeout(id) // remove settimeiout
+//     }
+//   })
+//   return <h1>404 Not Found</h1>
+// }
