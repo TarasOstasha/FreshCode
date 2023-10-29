@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import { createContext, useContext, useEffect, useState } from 'react';
+import { Component, createContext, useContext, useEffect, useState } from 'react';
 import './App.css';
 //import UserList from './components/UserList';
 import LoginForm from './components/LoginForm';
@@ -9,6 +9,7 @@ import RandomUsers from './components/RandomUsers';
 import ImageWrapper from './components/ImageWrapper';
 import SignUp from './components/SignUpForm';
 import CurrentWeather from './components/CurrentWeather';
+
 
 
 // function App() {
@@ -35,79 +36,132 @@ import CurrentWeather from './components/CurrentWeather';
 // }
 
 
-// const DataContext = createContext('default');
-// const UserContext = createContext('');
+
+
+// ThemeContext usage
+// theme color light, dark, purple
+// import UserPage from './pages/UserPage';
+// import styles from './App.module.css';
+// import classNames from 'classnames';
+// import { ThemeContext } from './contexts';
+// import CONSTANTS from './constants';
+// const {THEMES: {LIGHT, DARK, PURPLE}}  = CONSTANTS;
+
 // function App() {
-//   const data = 'data in app';
-//   const user = {
-//     name: 'Test',
-//     surname: 'Testovich'
-//   };
+//   const [theme, setTheme] = useState(LIGHT);
+//   // show saved theme from localstorage
+//   useEffect(() => {
+//     const savedTheme = localStorage.getItem('theme');
+//     setTheme(savedTheme ? savedTheme : LIGHT);
+//   }, []);
+//   // if changed a theme set a new color theme
+//   useEffect(() => {
+//     localStorage.setItem('theme', theme);
+//   }, [theme]);
+
+//   const containerClassName = classNames(styles.pageContainer, {
+//     [styles.light]: theme === LIGHT,
+//     [styles.dark]: theme === DARK,
+//     [styles.purple]: theme === PURPLE,
+//   });
+
 //   return (
-//     <UserContext.Provider value={user}>
-//       <DataContext.Provider value={data}>
-//         <Child />
-//       </DataContext.Provider>
-//     </UserContext.Provider>
+//     <ThemeContext.Provider value={{theme, setTheme}}>
+//       <div className={containerClassName}><UserPage /></div>
+//     </ThemeContext.Provider>
 
 //   )
 // }
 
+// classes
+import CounterWithClasses from './components/CounterWithClasses';
+// class App extends Component {
+//   constructor(props) {
+//     super(props)
 
-// theme color light, dark, purple
-import UserPage from './pages/UserPage';
-import styles from './App.module.css';
-import classNames from 'classnames';
-import { ThemeContext } from './contexts';
-import CONSTANTS from './constants';
-const {THEMES: {LIGHT, DARK, PURPLE}}  = CONSTANTS;
+//     this.state = {
+//        step: 1
+//     }
+//   }
+//   handleStepChange=({target : { value } })=> {
+//     this.setState({ step: +value })
+//   }
+//   render() {
+//     return (
+//       <>
+//       <input type='number' value={this.state.step} onChange={this.handleStepChange} />
+//       <CounterWithClasses step={this.state.step} />
+//       </>
+
+//     )
+//   }
+
+// }
+
+// Routing
+import { BrowserRouter as Router, Route, Switch, Link, useHistory } from 'react-router-dom';
 
 function App() {
-  const [theme, setTheme] = useState(LIGHT);
-  // show saved theme from localstorage
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    setTheme(savedTheme ? savedTheme : LIGHT);
-  }, []);
-  // if changed a theme set a new color theme
-  useEffect(() => {
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  const containerClassName = classNames(styles.pageContainer, {
-    [styles.light]: theme === LIGHT,
-    [styles.dark]: theme === DARK,
-    [styles.purple]: theme === PURPLE,
-  });
-
   return (
-    <ThemeContext.Provider value={{theme, setTheme}}>
-      <div className={containerClassName}><UserPage /></div>
-    </ThemeContext.Provider>
-
+    <Router>
+      <nav>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/about'>About</Link></li>
+        <li><Link to='/components'>Components</Link></li>
+        <li><Link to='/contacts'>Contacts</Link></li>
+      </nav>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/components">
+          <Components />
+        </Route>
+        <Route path="/contacts">
+          <Contacts />
+        </Route>
+        <Route path="/*">
+          <NotFound />
+        </Route>
+      </Switch>
+    </Router>
   )
 }
-
 
 export default App;
 
 
-// function Child() {
-//   return <ChildChild />
-// }
+// test router pages
+function Home() {
+  return <div>Home</div>
+}
 
-// function ChildChild() {
-//   const data = useContext(DataContext);
-//   // return <div>{data}</div>
-//   return (
-//     <div>
-//       {data}
-//       <ChildChildChild />
-//     </div>
-//   )
-// }
+function Components() {
+  return <div>Components</div>
+}
 
-// function ChildChildChild() {
-//   const user = useContext(UserContext);
-//   return <div>{user.name}</div>
-// }
+function About() {
+  return <div>About</div>
+}
+
+function Contacts() {
+  return <div>Contacts</div>
+}
+
+function NotFound() {
+  const history = useHistory();
+  useEffect(()=> {
+    const id = setTimeout(() => {
+
+      history.push('/');
+    },5000)
+
+    return () => {
+      clearTimeout(id) // remove settimeiout
+    }
+  })
+  return <h1>404 Not Found</h1>
+}
