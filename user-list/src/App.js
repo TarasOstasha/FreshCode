@@ -9,6 +9,8 @@ import RandomUsers from './components/RandomUsers';
 import ImageWrapper from './components/ImageWrapper';
 import SignUp from './components/SignUpForm';
 import CurrentWeather from './components/CurrentWeather';
+import AnimalSlider from './components/AnimalSlider';
+import UserListWithClasses from './components/UserListWithClasses';
 
 
 
@@ -74,30 +76,30 @@ import CurrentWeather from './components/CurrentWeather';
 // }
 
 // classes
-import CounterWithClasses from './components/CounterWithClasses';
-class App extends Component {
-  constructor(props) {
-    super(props)
+// import CounterWithClasses from './components/CounterWithClasses';
+// class App extends Component {
+//   constructor(props) {
+//     super(props)
 
-    this.state = {
-       step: 1
-    }
-  }
-  handleStepChange=({target : { value } })=> {
-    this.setState({ step: +value })
-  }
-  render() {
-    return (
-      <>
-      <input type='number' value={this.state.step} onChange={this.handleStepChange} />
-      {/* <CounterWithClasses step={this.state.step} /> */}
-      <CounterWithClasses step={1} />
-      </>
+//     this.state = {
+//        step: 1
+//     }
+//   }
+//   handleStepChange=({target : { value } })=> {
+//     this.setState({ step: +value })
+//   }
+//   render() {
+//     return (
+//       <>
+//       <input type='number' value={this.state.step} onChange={this.handleStepChange} />
+//       {/* <CounterWithClasses step={this.state.step} /> */}
+//       <CounterWithClasses step={1} />
+//       </>
 
-    )
-  }
+//     )
+//   }
 
-}
+// }
 
 // Routing
 // import { BrowserRouter as Router, Route, Switch, Link, useHistory, useRouteMatch, NavLink } from 'react-router-dom';
@@ -132,6 +134,13 @@ class App extends Component {
 //     </Router>
 //   )
 // }
+
+
+// slider
+function App() {
+  // return <AnimalSlider />
+  return <UserListWithClasses />
+}
 
 export default App;
 
