@@ -11,6 +11,7 @@ import SignUp from './components/SignUpForm';
 import CurrentWeather from './components/CurrentWeather';
 import AnimalSlider from './components/AnimalSlider';
 import UserListWithClasses from './components/UserListWithClasses';
+import Carousel from './components/Carousel';
 
 
 
@@ -137,13 +138,17 @@ import UserListWithClasses from './components/UserListWithClasses';
 
 
 // slider
-function App() {
-  // return <AnimalSlider />
-  return <UserListWithClasses />
-}
+// function App() {
+//   // return <AnimalSlider />
+//   return <UserListWithClasses />
+// }
+
+// home work carousel
 
 export default App;
-
+function App() {
+  return <Carousel />
+}
 
 // test router pages
 // function Home() {
