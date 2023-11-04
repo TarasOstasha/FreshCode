@@ -43,6 +43,7 @@ function RandomUsers() {
           />
         </label>
         <button onClick={prev}>{'<'}</button>
+        <button onClick={prev}>{'||'}</button>
         <button onClick={next}>{'>'}</button>
       </section>
 
